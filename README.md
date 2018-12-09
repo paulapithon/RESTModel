@@ -17,5 +17,4 @@ Request
   post()
   delete()
   ```
- 
-  
+ A implementação destes métodos chama serviços já criados de REST. Estes irão apenas facilitar o acesso.
