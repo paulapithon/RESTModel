@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: br.com.poli.RESTModel.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: br.com.poli.RESTModel.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: br.com.poli.RESTModel.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: br.com.poli.RESTModel,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-10
+Export-Package: br.com.poli.ide.contentassist.antlr,
+ br.com.poli.ide.contentassist.antlr.internal
+

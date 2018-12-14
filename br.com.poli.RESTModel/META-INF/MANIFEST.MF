@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: br.com.poli.RESTModel
+Bundle-ManifestVersion: 2
+Bundle-Name: br.com.poli.RESTModel
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: br.com.poli.RESTModel; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-10
+Export-Package: br.com.poli.services,
+ br.com.poli.rESTModel.util,
+ br.com.poli.scoping,
+ br.com.poli,
+ br.com.poli.rESTModel,
+ br.com.poli.generator,
+ br.com.poli.serializer,
+ br.com.poli.parser.antlr.internal,
+ br.com.poli.rESTModel.impl,
+ br.com.poli.parser.antlr,
+ br.com.poli.validation
+Import-Package: org.apache.log4j
