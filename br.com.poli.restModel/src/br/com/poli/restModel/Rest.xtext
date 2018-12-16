@@ -1,0 +1,60 @@
+grammar br.com.poli.restModel.Rest with org.eclipse.xtext.common.Terminals hidden(WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate rest "http://www.com.br/poli/restModel/Rest"
+
+
+Model:{Model} "Request"  '{'  (body+=Body)*  '}';
+	
+Body: {Body} (elem += Elem) 
+	| {Body} (globAtrib += Atrib)
+;
+
+Elem: (ClassName = ID)  '{'  (field += Field)*  '}';
+
+Field: {Field} (atrib=Atrib)
+	 | {Field} (method=Method)
+;
+
+Method:(mName = ID) '(' ( par+=Parm )* ')' ":"  (Tipo = VALID_TYPES) ( (implem = ALMOST__ANY__THING) )? 
+;	
+
+Parm: atribName = ID ':' Tipo_atri = VALID_TYPES
+	
+;
+
+Atrib: (atribName = ID)  ":"  (Tipo = INT_TYPES)    (":" (ValueInt = INT))?
+	 | (atribName = ID)  ":"  (Tipo = 'boolean')    (":" (ValueBool = BOOL))?
+	 | (atribName = ID)  ":"  (Tipo = FLOAT_TYPES)  (":" (ValueFlo = FLOAT))?
+	 | (atribName = ID)  ":"  (Tipo = "String")     (":" (ValueStr = STRING))?
+	 | (atribName = ID)  ":"  (Tipo = "char")     (":" (ValueChr = CHAR))?
+	 | (atribName = ID)  ":"  (Tipo = TYPE_NAME)
+;
+TYPE_NAME : ID ('<'((ID|VALID_TYPES)',')* ID '>')?; 
+
+VALID_TYPES :"String"
+			|'boolean'
+			|"char"
+			|INT_TYPES
+			|FLOAT_TYPES
+;
+
+terminal BOOL :("True"|"False");
+
+terminal FLOAT returns ecore::EFloat :  ('1'..'9')('0'..'9')*'.'('0'..'9')+;
+
+terminal CHAR returns ecore::EChar :  '\''.'\'';
+
+terminal INT_TYPES : "int"|"long"|"short"|"byte";
+
+terminal FLOAT_TYPES : "float"|"double";
+@Override 
+terminal WS         : (' '|'\t'|'\r'|'\n')+;
+
+@Override 
+terminal ML_COMMENT : '##' -> '##';
+
+terminal ALMOST__ANY__THING : ':''{' !('}')* ('}');
+
+@Override 
+terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
