@@ -51,22 +51,31 @@ public interface RestFactory extends EFactory
   Elem createElem();
 
   /**
-   * Returns a new object of class '<em>Field</em>'.
+   * Returns a new object of class '<em>Atrib</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Field</em>'.
+   * @return a new object of class '<em>Atrib</em>'.
    * @generated
    */
-  Field createField();
+  Atrib createAtrib();
 
   /**
-   * Returns a new object of class '<em>Method</em>'.
+   * Returns a new object of class '<em>Glob Atrib</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Method</em>'.
+   * @return a new object of class '<em>Glob Atrib</em>'.
    * @generated
    */
-  Method createMethod();
+  GlobAtrib createGlobAtrib();
+
+  /**
+   * Returns a new object of class '<em>Values</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Values</em>'.
+   * @generated
+   */
+  Values createValues();
 
   /**
    * Returns a new object of class '<em>Parm</em>'.
@@ -76,15 +85,6 @@ public interface RestFactory extends EFactory
    * @generated
    */
   Parm createParm();
-
-  /**
-   * Returns a new object of class '<em>Atrib</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atrib</em>'.
-   * @generated
-   */
-  Atrib createAtrib();
 
   /**
    * Returns the package supported by this factory.

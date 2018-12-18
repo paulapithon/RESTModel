@@ -3,7 +3,7 @@
  */
 package br.com.poli.restModel.rest.impl;
 
-import br.com.poli.restModel.rest.Atrib;
+import br.com.poli.restModel.rest.GlobAtrib;
 import br.com.poli.restModel.rest.RestPackage;
 import br.com.poli.restModel.rest.Values;
 
@@ -18,20 +18,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Atrib</b></em>'.
+ * An implementation of the model object '<em><b>Glob Atrib</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link br.com.poli.restModel.rest.impl.AtribImpl#getAtribName <em>Atrib Name</em>}</li>
- *   <li>{@link br.com.poli.restModel.rest.impl.AtribImpl#getTipo <em>Tipo</em>}</li>
- *   <li>{@link br.com.poli.restModel.rest.impl.AtribImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.impl.GlobAtribImpl#getAtribName <em>Atrib Name</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.impl.GlobAtribImpl#getTipo <em>Tipo</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.impl.GlobAtribImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
+public class GlobAtribImpl extends MinimalEObjectImpl.Container implements GlobAtrib
 {
   /**
    * The default value of the '{@link #getAtribName() <em>Atrib Name</em>}' attribute.
@@ -88,7 +88,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AtribImpl()
+  protected GlobAtribImpl()
   {
     super();
   }
@@ -101,7 +101,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   @Override
   protected EClass eStaticClass()
   {
-    return RestPackage.Literals.ATRIB;
+    return RestPackage.Literals.GLOB_ATRIB;
   }
 
   /**
@@ -124,7 +124,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
     String oldAtribName = atribName;
     atribName = newAtribName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.ATRIB__ATRIB_NAME, oldAtribName, atribName));
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.GLOB_ATRIB__ATRIB_NAME, oldAtribName, atribName));
   }
 
   /**
@@ -147,7 +147,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
     String oldTipo = tipo;
     tipo = newTipo;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.ATRIB__TIPO, oldTipo, tipo));
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.GLOB_ATRIB__TIPO, oldTipo, tipo));
   }
 
   /**
@@ -171,7 +171,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RestPackage.ATRIB__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RestPackage.GLOB_ATRIB__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -188,14 +188,14 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RestPackage.ATRIB__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RestPackage.GLOB_ATRIB__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RestPackage.ATRIB__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RestPackage.GLOB_ATRIB__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.ATRIB__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.GLOB_ATRIB__VALUE, newValue, newValue));
   }
 
   /**
@@ -208,7 +208,7 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   {
     switch (featureID)
     {
-      case RestPackage.ATRIB__VALUE:
+      case RestPackage.GLOB_ATRIB__VALUE:
         return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -224,11 +224,11 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   {
     switch (featureID)
     {
-      case RestPackage.ATRIB__ATRIB_NAME:
+      case RestPackage.GLOB_ATRIB__ATRIB_NAME:
         return getAtribName();
-      case RestPackage.ATRIB__TIPO:
+      case RestPackage.GLOB_ATRIB__TIPO:
         return getTipo();
-      case RestPackage.ATRIB__VALUE:
+      case RestPackage.GLOB_ATRIB__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -244,13 +244,13 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   {
     switch (featureID)
     {
-      case RestPackage.ATRIB__ATRIB_NAME:
+      case RestPackage.GLOB_ATRIB__ATRIB_NAME:
         setAtribName((String)newValue);
         return;
-      case RestPackage.ATRIB__TIPO:
+      case RestPackage.GLOB_ATRIB__TIPO:
         setTipo((String)newValue);
         return;
-      case RestPackage.ATRIB__VALUE:
+      case RestPackage.GLOB_ATRIB__VALUE:
         setValue((Values)newValue);
         return;
     }
@@ -267,13 +267,13 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   {
     switch (featureID)
     {
-      case RestPackage.ATRIB__ATRIB_NAME:
+      case RestPackage.GLOB_ATRIB__ATRIB_NAME:
         setAtribName(ATRIB_NAME_EDEFAULT);
         return;
-      case RestPackage.ATRIB__TIPO:
+      case RestPackage.GLOB_ATRIB__TIPO:
         setTipo(TIPO_EDEFAULT);
         return;
-      case RestPackage.ATRIB__VALUE:
+      case RestPackage.GLOB_ATRIB__VALUE:
         setValue((Values)null);
         return;
     }
@@ -290,11 +290,11 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
   {
     switch (featureID)
     {
-      case RestPackage.ATRIB__ATRIB_NAME:
+      case RestPackage.GLOB_ATRIB__ATRIB_NAME:
         return ATRIB_NAME_EDEFAULT == null ? atribName != null : !ATRIB_NAME_EDEFAULT.equals(atribName);
-      case RestPackage.ATRIB__TIPO:
+      case RestPackage.GLOB_ATRIB__TIPO:
         return TIPO_EDEFAULT == null ? tipo != null : !TIPO_EDEFAULT.equals(tipo);
-      case RestPackage.ATRIB__VALUE:
+      case RestPackage.GLOB_ATRIB__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
@@ -319,4 +319,4 @@ public class AtribImpl extends MinimalEObjectImpl.Container implements Atrib
     return result.toString();
   }
 
-} //AtribImpl
+} //GlobAtribImpl

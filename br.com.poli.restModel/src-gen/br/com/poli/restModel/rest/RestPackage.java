@@ -96,7 +96,7 @@ public interface RestPackage extends EPackage
   int BODY = 1;
 
   /**
-   * The feature id for the '<em><b>Elem</b></em>' containment reference list.
+   * The feature id for the '<em><b>Elem</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -105,7 +105,7 @@ public interface RestPackage extends EPackage
   int BODY__ELEM = 0;
 
   /**
-   * The feature id for the '<em><b>Glob Atrib</b></em>' containment reference list.
+   * The feature id for the '<em><b>Glob Atrib</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -142,13 +142,22 @@ public interface RestPackage extends EPackage
   int ELEM__CLASS_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Field</b></em>' containment reference list.
+   * The feature id for the '<em><b>Package</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ELEM__FIELD = 1;
+  int ELEM__PACKAGE = 1;
+
+  /**
+   * The feature id for the '<em><b>Atrib</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEM__ATRIB = 2;
 
   /**
    * The number of structural features of the '<em>Elem</em>' class.
@@ -157,72 +166,26 @@ public interface RestPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ELEM_FEATURE_COUNT = 2;
+  int ELEM_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.FieldImpl <em>Field</em>}' class.
+   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.AtribImpl <em>Atrib</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see br.com.poli.restModel.rest.impl.FieldImpl
-   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getField()
+   * @see br.com.poli.restModel.rest.impl.AtribImpl
+   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getAtrib()
    * @generated
    */
-  int FIELD = 3;
+  int ATRIB = 3;
 
   /**
-   * The feature id for the '<em><b>Atrib</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FIELD__ATRIB = 0;
-
-  /**
-   * The feature id for the '<em><b>Method</b></em>' containment reference.
+   * The feature id for the '<em><b>Atrib Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__METHOD = 1;
-
-  /**
-   * The number of structural features of the '<em>Field</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FIELD_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.MethodImpl <em>Method</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see br.com.poli.restModel.rest.impl.MethodImpl
-   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getMethod()
-   * @generated
-   */
-  int METHOD = 4;
-
-  /**
-   * The feature id for the '<em><b>MName</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD__MNAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Par</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD__PAR = 1;
+  int ATRIB__ATRIB_NAME = 0;
 
   /**
    * The feature id for the '<em><b>Tipo</b></em>' attribute.
@@ -231,25 +194,153 @@ public interface RestPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD__TIPO = 2;
+  int ATRIB__TIPO = 1;
 
   /**
-   * The feature id for the '<em><b>Implem</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD__IMPLEM = 3;
+  int ATRIB__VALUE = 2;
 
   /**
-   * The number of structural features of the '<em>Method</em>' class.
+   * The number of structural features of the '<em>Atrib</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 4;
+  int ATRIB_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.GlobAtribImpl <em>Glob Atrib</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.com.poli.restModel.rest.impl.GlobAtribImpl
+   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getGlobAtrib()
+   * @generated
+   */
+  int GLOB_ATRIB = 4;
+
+  /**
+   * The feature id for the '<em><b>Atrib Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOB_ATRIB__ATRIB_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOB_ATRIB__TIPO = 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOB_ATRIB__VALUE = 2;
+
+  /**
+   * The number of structural features of the '<em>Glob Atrib</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOB_ATRIB_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.ValuesImpl <em>Values</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see br.com.poli.restModel.rest.impl.ValuesImpl
+   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getValues()
+   * @generated
+   */
+  int VALUES = 5;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID = 0;
+
+  /**
+   * The feature id for the '<em><b>Id B</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID_B = 1;
+
+  /**
+   * The feature id for the '<em><b>Id F</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID_F = 2;
+
+  /**
+   * The feature id for the '<em><b>Id S</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID_S = 3;
+
+  /**
+   * The feature id for the '<em><b>Id C</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID_C = 4;
+
+  /**
+   * The feature id for the '<em><b>Id T</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__ID_T = 5;
+
+  /**
+   * The feature id for the '<em><b>Par</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES__PAR = 6;
+
+  /**
+   * The number of structural features of the '<em>Values</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUES_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link br.com.poli.restModel.rest.impl.ParmImpl <em>Parm</em>}' class.
@@ -259,7 +350,7 @@ public interface RestPackage extends EPackage
    * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getParm()
    * @generated
    */
-  int PARM = 5;
+  int PARM = 6;
 
   /**
    * The feature id for the '<em><b>Atrib Name</b></em>' attribute.
@@ -287,88 +378,6 @@ public interface RestPackage extends EPackage
    * @ordered
    */
   int PARM_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link br.com.poli.restModel.rest.impl.AtribImpl <em>Atrib</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see br.com.poli.restModel.rest.impl.AtribImpl
-   * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getAtrib()
-   * @generated
-   */
-  int ATRIB = 6;
-
-  /**
-   * The feature id for the '<em><b>Atrib Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__ATRIB_NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Tipo</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__TIPO = 1;
-
-  /**
-   * The feature id for the '<em><b>Value Int</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__VALUE_INT = 2;
-
-  /**
-   * The feature id for the '<em><b>Value Bool</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__VALUE_BOOL = 3;
-
-  /**
-   * The feature id for the '<em><b>Value Flo</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__VALUE_FLO = 4;
-
-  /**
-   * The feature id for the '<em><b>Value Str</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__VALUE_STR = 5;
-
-  /**
-   * The feature id for the '<em><b>Value Chr</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB__VALUE_CHR = 6;
-
-  /**
-   * The number of structural features of the '<em>Atrib</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATRIB_FEATURE_COUNT = 7;
 
 
   /**
@@ -403,10 +412,10 @@ public interface RestPackage extends EPackage
   EClass getBody();
 
   /**
-   * Returns the meta object for the containment reference list '{@link br.com.poli.restModel.rest.Body#getElem <em>Elem</em>}'.
+   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.Body#getElem <em>Elem</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Elem</em>'.
+   * @return the meta object for the containment reference '<em>Elem</em>'.
    * @see br.com.poli.restModel.rest.Body#getElem()
    * @see #getBody()
    * @generated
@@ -414,10 +423,10 @@ public interface RestPackage extends EPackage
   EReference getBody_Elem();
 
   /**
-   * Returns the meta object for the containment reference list '{@link br.com.poli.restModel.rest.Body#getGlobAtrib <em>Glob Atrib</em>}'.
+   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.Body#getGlobAtrib <em>Glob Atrib</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Glob Atrib</em>'.
+   * @return the meta object for the containment reference '<em>Glob Atrib</em>'.
    * @see br.com.poli.restModel.rest.Body#getGlobAtrib()
    * @see #getBody()
    * @generated
@@ -446,133 +455,26 @@ public interface RestPackage extends EPackage
   EAttribute getElem_ClassName();
 
   /**
-   * Returns the meta object for the containment reference list '{@link br.com.poli.restModel.rest.Elem#getField <em>Field</em>}'.
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Elem#getPackage <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Field</em>'.
-   * @see br.com.poli.restModel.rest.Elem#getField()
+   * @return the meta object for the attribute '<em>Package</em>'.
+   * @see br.com.poli.restModel.rest.Elem#getPackage()
    * @see #getElem()
    * @generated
    */
-  EReference getElem_Field();
+  EAttribute getElem_Package();
 
   /**
-   * Returns the meta object for class '{@link br.com.poli.restModel.rest.Field <em>Field</em>}'.
+   * Returns the meta object for the containment reference list '{@link br.com.poli.restModel.rest.Elem#getAtrib <em>Atrib</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Field</em>'.
-   * @see br.com.poli.restModel.rest.Field
+   * @return the meta object for the containment reference list '<em>Atrib</em>'.
+   * @see br.com.poli.restModel.rest.Elem#getAtrib()
+   * @see #getElem()
    * @generated
    */
-  EClass getField();
-
-  /**
-   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.Field#getAtrib <em>Atrib</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Atrib</em>'.
-   * @see br.com.poli.restModel.rest.Field#getAtrib()
-   * @see #getField()
-   * @generated
-   */
-  EReference getField_Atrib();
-
-  /**
-   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.Field#getMethod <em>Method</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Method</em>'.
-   * @see br.com.poli.restModel.rest.Field#getMethod()
-   * @see #getField()
-   * @generated
-   */
-  EReference getField_Method();
-
-  /**
-   * Returns the meta object for class '{@link br.com.poli.restModel.rest.Method <em>Method</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Method</em>'.
-   * @see br.com.poli.restModel.rest.Method
-   * @generated
-   */
-  EClass getMethod();
-
-  /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Method#getMName <em>MName</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>MName</em>'.
-   * @see br.com.poli.restModel.rest.Method#getMName()
-   * @see #getMethod()
-   * @generated
-   */
-  EAttribute getMethod_MName();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link br.com.poli.restModel.rest.Method#getPar <em>Par</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Par</em>'.
-   * @see br.com.poli.restModel.rest.Method#getPar()
-   * @see #getMethod()
-   * @generated
-   */
-  EReference getMethod_Par();
-
-  /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Method#getTipo <em>Tipo</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tipo</em>'.
-   * @see br.com.poli.restModel.rest.Method#getTipo()
-   * @see #getMethod()
-   * @generated
-   */
-  EAttribute getMethod_Tipo();
-
-  /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Method#getImplem <em>Implem</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Implem</em>'.
-   * @see br.com.poli.restModel.rest.Method#getImplem()
-   * @see #getMethod()
-   * @generated
-   */
-  EAttribute getMethod_Implem();
-
-  /**
-   * Returns the meta object for class '{@link br.com.poli.restModel.rest.Parm <em>Parm</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Parm</em>'.
-   * @see br.com.poli.restModel.rest.Parm
-   * @generated
-   */
-  EClass getParm();
-
-  /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Parm#getAtribName <em>Atrib Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Atrib Name</em>'.
-   * @see br.com.poli.restModel.rest.Parm#getAtribName()
-   * @see #getParm()
-   * @generated
-   */
-  EAttribute getParm_AtribName();
-
-  /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Parm#getTipo_atri <em>Tipo atri</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tipo atri</em>'.
-   * @see br.com.poli.restModel.rest.Parm#getTipo_atri()
-   * @see #getParm()
-   * @generated
-   */
-  EAttribute getParm_Tipo_atri();
+  EReference getElem_Atrib();
 
   /**
    * Returns the meta object for class '{@link br.com.poli.restModel.rest.Atrib <em>Atrib</em>}'.
@@ -607,59 +509,177 @@ public interface RestPackage extends EPackage
   EAttribute getAtrib_Tipo();
 
   /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Atrib#getValueInt <em>Value Int</em>}'.
+   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.Atrib#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Int</em>'.
-   * @see br.com.poli.restModel.rest.Atrib#getValueInt()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see br.com.poli.restModel.rest.Atrib#getValue()
    * @see #getAtrib()
    * @generated
    */
-  EAttribute getAtrib_ValueInt();
+  EReference getAtrib_Value();
 
   /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Atrib#getValueBool <em>Value Bool</em>}'.
+   * Returns the meta object for class '{@link br.com.poli.restModel.rest.GlobAtrib <em>Glob Atrib</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Bool</em>'.
-   * @see br.com.poli.restModel.rest.Atrib#getValueBool()
-   * @see #getAtrib()
+   * @return the meta object for class '<em>Glob Atrib</em>'.
+   * @see br.com.poli.restModel.rest.GlobAtrib
    * @generated
    */
-  EAttribute getAtrib_ValueBool();
+  EClass getGlobAtrib();
 
   /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Atrib#getValueFlo <em>Value Flo</em>}'.
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.GlobAtrib#getAtribName <em>Atrib Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Flo</em>'.
-   * @see br.com.poli.restModel.rest.Atrib#getValueFlo()
-   * @see #getAtrib()
+   * @return the meta object for the attribute '<em>Atrib Name</em>'.
+   * @see br.com.poli.restModel.rest.GlobAtrib#getAtribName()
+   * @see #getGlobAtrib()
    * @generated
    */
-  EAttribute getAtrib_ValueFlo();
+  EAttribute getGlobAtrib_AtribName();
 
   /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Atrib#getValueStr <em>Value Str</em>}'.
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.GlobAtrib#getTipo <em>Tipo</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Str</em>'.
-   * @see br.com.poli.restModel.rest.Atrib#getValueStr()
-   * @see #getAtrib()
+   * @return the meta object for the attribute '<em>Tipo</em>'.
+   * @see br.com.poli.restModel.rest.GlobAtrib#getTipo()
+   * @see #getGlobAtrib()
    * @generated
    */
-  EAttribute getAtrib_ValueStr();
+  EAttribute getGlobAtrib_Tipo();
 
   /**
-   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Atrib#getValueChr <em>Value Chr</em>}'.
+   * Returns the meta object for the containment reference '{@link br.com.poli.restModel.rest.GlobAtrib#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Chr</em>'.
-   * @see br.com.poli.restModel.rest.Atrib#getValueChr()
-   * @see #getAtrib()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see br.com.poli.restModel.rest.GlobAtrib#getValue()
+   * @see #getGlobAtrib()
    * @generated
    */
-  EAttribute getAtrib_ValueChr();
+  EReference getGlobAtrib_Value();
+
+  /**
+   * Returns the meta object for class '{@link br.com.poli.restModel.rest.Values <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Values</em>'.
+   * @see br.com.poli.restModel.rest.Values
+   * @generated
+   */
+  EClass getValues();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see br.com.poli.restModel.rest.Values#getId()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_Id();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getIdB <em>Id B</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id B</em>'.
+   * @see br.com.poli.restModel.rest.Values#getIdB()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_IdB();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getIdF <em>Id F</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id F</em>'.
+   * @see br.com.poli.restModel.rest.Values#getIdF()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_IdF();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getIdS <em>Id S</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id S</em>'.
+   * @see br.com.poli.restModel.rest.Values#getIdS()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_IdS();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getIdC <em>Id C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id C</em>'.
+   * @see br.com.poli.restModel.rest.Values#getIdC()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_IdC();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Values#getIdT <em>Id T</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id T</em>'.
+   * @see br.com.poli.restModel.rest.Values#getIdT()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_IdT();
+
+  /**
+   * Returns the meta object for the attribute list '{@link br.com.poli.restModel.rest.Values#getPar <em>Par</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Par</em>'.
+   * @see br.com.poli.restModel.rest.Values#getPar()
+   * @see #getValues()
+   * @generated
+   */
+  EAttribute getValues_Par();
+
+  /**
+   * Returns the meta object for class '{@link br.com.poli.restModel.rest.Parm <em>Parm</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parm</em>'.
+   * @see br.com.poli.restModel.rest.Parm
+   * @generated
+   */
+  EClass getParm();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Parm#getAtribName <em>Atrib Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Atrib Name</em>'.
+   * @see br.com.poli.restModel.rest.Parm#getAtribName()
+   * @see #getParm()
+   * @generated
+   */
+  EAttribute getParm_AtribName();
+
+  /**
+   * Returns the meta object for the attribute '{@link br.com.poli.restModel.rest.Parm#getTipo_atri <em>Tipo atri</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tipo atri</em>'.
+   * @see br.com.poli.restModel.rest.Parm#getTipo_atri()
+   * @see #getParm()
+   * @generated
+   */
+  EAttribute getParm_Tipo_atri();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -713,7 +733,7 @@ public interface RestPackage extends EPackage
     EClass BODY = eINSTANCE.getBody();
 
     /**
-     * The meta object literal for the '<em><b>Elem</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Elem</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -721,7 +741,7 @@ public interface RestPackage extends EPackage
     EReference BODY__ELEM = eINSTANCE.getBody_Elem();
 
     /**
-     * The meta object literal for the '<em><b>Glob Atrib</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Glob Atrib</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -747,106 +767,20 @@ public interface RestPackage extends EPackage
     EAttribute ELEM__CLASS_NAME = eINSTANCE.getElem_ClassName();
 
     /**
-     * The meta object literal for the '<em><b>Field</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ELEM__FIELD = eINSTANCE.getElem_Field();
+    EAttribute ELEM__PACKAGE = eINSTANCE.getElem_Package();
 
     /**
-     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.FieldImpl <em>Field</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see br.com.poli.restModel.rest.impl.FieldImpl
-     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getField()
-     * @generated
-     */
-    EClass FIELD = eINSTANCE.getField();
-
-    /**
-     * The meta object literal for the '<em><b>Atrib</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Atrib</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__ATRIB = eINSTANCE.getField_Atrib();
-
-    /**
-     * The meta object literal for the '<em><b>Method</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FIELD__METHOD = eINSTANCE.getField_Method();
-
-    /**
-     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.MethodImpl <em>Method</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see br.com.poli.restModel.rest.impl.MethodImpl
-     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getMethod()
-     * @generated
-     */
-    EClass METHOD = eINSTANCE.getMethod();
-
-    /**
-     * The meta object literal for the '<em><b>MName</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD__MNAME = eINSTANCE.getMethod_MName();
-
-    /**
-     * The meta object literal for the '<em><b>Par</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METHOD__PAR = eINSTANCE.getMethod_Par();
-
-    /**
-     * The meta object literal for the '<em><b>Tipo</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD__TIPO = eINSTANCE.getMethod_Tipo();
-
-    /**
-     * The meta object literal for the '<em><b>Implem</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD__IMPLEM = eINSTANCE.getMethod_Implem();
-
-    /**
-     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.ParmImpl <em>Parm</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see br.com.poli.restModel.rest.impl.ParmImpl
-     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getParm()
-     * @generated
-     */
-    EClass PARM = eINSTANCE.getParm();
-
-    /**
-     * The meta object literal for the '<em><b>Atrib Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PARM__ATRIB_NAME = eINSTANCE.getParm_AtribName();
-
-    /**
-     * The meta object literal for the '<em><b>Tipo atri</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PARM__TIPO_ATRI = eINSTANCE.getParm_Tipo_atri();
+    EReference ELEM__ATRIB = eINSTANCE.getElem_Atrib();
 
     /**
      * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.AtribImpl <em>Atrib</em>}' class.
@@ -875,44 +809,138 @@ public interface RestPackage extends EPackage
     EAttribute ATRIB__TIPO = eINSTANCE.getAtrib_Tipo();
 
     /**
-     * The meta object literal for the '<em><b>Value Int</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATRIB__VALUE_INT = eINSTANCE.getAtrib_ValueInt();
+    EReference ATRIB__VALUE = eINSTANCE.getAtrib_Value();
 
     /**
-     * The meta object literal for the '<em><b>Value Bool</b></em>' attribute feature.
+     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.GlobAtribImpl <em>Glob Atrib</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see br.com.poli.restModel.rest.impl.GlobAtribImpl
+     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getGlobAtrib()
      * @generated
      */
-    EAttribute ATRIB__VALUE_BOOL = eINSTANCE.getAtrib_ValueBool();
+    EClass GLOB_ATRIB = eINSTANCE.getGlobAtrib();
 
     /**
-     * The meta object literal for the '<em><b>Value Flo</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Atrib Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATRIB__VALUE_FLO = eINSTANCE.getAtrib_ValueFlo();
+    EAttribute GLOB_ATRIB__ATRIB_NAME = eINSTANCE.getGlobAtrib_AtribName();
 
     /**
-     * The meta object literal for the '<em><b>Value Str</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Tipo</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATRIB__VALUE_STR = eINSTANCE.getAtrib_ValueStr();
+    EAttribute GLOB_ATRIB__TIPO = eINSTANCE.getGlobAtrib_Tipo();
 
     /**
-     * The meta object literal for the '<em><b>Value Chr</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATRIB__VALUE_CHR = eINSTANCE.getAtrib_ValueChr();
+    EReference GLOB_ATRIB__VALUE = eINSTANCE.getGlobAtrib_Value();
+
+    /**
+     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.ValuesImpl <em>Values</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.com.poli.restModel.rest.impl.ValuesImpl
+     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getValues()
+     * @generated
+     */
+    EClass VALUES = eINSTANCE.getValues();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID = eINSTANCE.getValues_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Id B</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID_B = eINSTANCE.getValues_IdB();
+
+    /**
+     * The meta object literal for the '<em><b>Id F</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID_F = eINSTANCE.getValues_IdF();
+
+    /**
+     * The meta object literal for the '<em><b>Id S</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID_S = eINSTANCE.getValues_IdS();
+
+    /**
+     * The meta object literal for the '<em><b>Id C</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID_C = eINSTANCE.getValues_IdC();
+
+    /**
+     * The meta object literal for the '<em><b>Id T</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__ID_T = eINSTANCE.getValues_IdT();
+
+    /**
+     * The meta object literal for the '<em><b>Par</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUES__PAR = eINSTANCE.getValues_Par();
+
+    /**
+     * The meta object literal for the '{@link br.com.poli.restModel.rest.impl.ParmImpl <em>Parm</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see br.com.poli.restModel.rest.impl.ParmImpl
+     * @see br.com.poli.restModel.rest.impl.RestPackageImpl#getParm()
+     * @generated
+     */
+    EClass PARM = eINSTANCE.getParm();
+
+    /**
+     * The meta object literal for the '<em><b>Atrib Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARM__ATRIB_NAME = eINSTANCE.getParm_AtribName();
+
+    /**
+     * The meta object literal for the '<em><b>Tipo atri</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARM__TIPO_ATRI = eINSTANCE.getParm_Tipo_atri();
 
   }
 

@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link br.com.poli.restModel.rest.Elem#getClassName <em>Class Name</em>}</li>
- *   <li>{@link br.com.poli.restModel.rest.Elem#getField <em>Field</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.Elem#getPackage <em>Package</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.Elem#getAtrib <em>Atrib</em>}</li>
  * </ul>
  *
  * @see br.com.poli.restModel.rest.RestPackage#getElem()
@@ -53,19 +54,45 @@ public interface Elem extends EObject
   void setClassName(String value);
 
   /**
-   * Returns the value of the '<em><b>Field</b></em>' containment reference list.
-   * The list contents are of type {@link br.com.poli.restModel.rest.Field}.
+   * Returns the value of the '<em><b>Package</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Field</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Package</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Field</em>' containment reference list.
-   * @see br.com.poli.restModel.rest.RestPackage#getElem_Field()
+   * @return the value of the '<em>Package</em>' attribute.
+   * @see #setPackage(String)
+   * @see br.com.poli.restModel.rest.RestPackage#getElem_Package()
+   * @model
+   * @generated
+   */
+  String getPackage();
+
+  /**
+   * Sets the value of the '{@link br.com.poli.restModel.rest.Elem#getPackage <em>Package</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Package</em>' attribute.
+   * @see #getPackage()
+   * @generated
+   */
+  void setPackage(String value);
+
+  /**
+   * Returns the value of the '<em><b>Atrib</b></em>' containment reference list.
+   * The list contents are of type {@link br.com.poli.restModel.rest.Atrib}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Atrib</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Atrib</em>' containment reference list.
+   * @see br.com.poli.restModel.rest.RestPackage#getElem_Atrib()
    * @model containment="true"
    * @generated
    */
-  EList<Field> getField();
+  EList<Atrib> getAtrib();
 
 } // Elem

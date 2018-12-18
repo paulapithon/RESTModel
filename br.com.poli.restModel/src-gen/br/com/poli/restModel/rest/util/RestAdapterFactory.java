@@ -91,24 +91,24 @@ public class RestAdapterFactory extends AdapterFactoryImpl
         return createElemAdapter();
       }
       @Override
-      public Adapter caseField(Field object)
+      public Adapter caseAtrib(Atrib object)
       {
-        return createFieldAdapter();
+        return createAtribAdapter();
       }
       @Override
-      public Adapter caseMethod(Method object)
+      public Adapter caseGlobAtrib(GlobAtrib object)
       {
-        return createMethodAdapter();
+        return createGlobAtribAdapter();
+      }
+      @Override
+      public Adapter caseValues(Values object)
+      {
+        return createValuesAdapter();
       }
       @Override
       public Adapter caseParm(Parm object)
       {
         return createParmAdapter();
-      }
-      @Override
-      public Adapter caseAtrib(Atrib object)
-      {
-        return createAtribAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -178,31 +178,46 @@ public class RestAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.Field <em>Field</em>}'.
+   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.Atrib <em>Atrib</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see br.com.poli.restModel.rest.Field
+   * @see br.com.poli.restModel.rest.Atrib
    * @generated
    */
-  public Adapter createFieldAdapter()
+  public Adapter createAtribAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.Method <em>Method</em>}'.
+   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.GlobAtrib <em>Glob Atrib</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see br.com.poli.restModel.rest.Method
+   * @see br.com.poli.restModel.rest.GlobAtrib
    * @generated
    */
-  public Adapter createMethodAdapter()
+  public Adapter createGlobAtribAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.Values <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see br.com.poli.restModel.rest.Values
+   * @generated
+   */
+  public Adapter createValuesAdapter()
   {
     return null;
   }
@@ -218,21 +233,6 @@ public class RestAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createParmAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link br.com.poli.restModel.rest.Atrib <em>Atrib</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see br.com.poli.restModel.rest.Atrib
-   * @generated
-   */
-  public Adapter createAtribAdapter()
   {
     return null;
   }

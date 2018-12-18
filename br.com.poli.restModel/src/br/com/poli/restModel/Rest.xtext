@@ -6,31 +6,29 @@ generate rest "http://www.com.br/poli/restModel/Rest"
 
 Model:{Model} "Request"  '{'  (body+=Body)*  '}';
 	
-Body: {Body} (elem += Elem) 
-	| {Body} (globAtrib += Atrib)
+Body: (elem = Elem) 
+	| (globAtrib = GlobAtrib)
 ;
 
-Elem: (ClassName = ID)  '{'  (field += Field)*  '}';
+Elem: (ClassName = ID) '{' ('package' package=PackageName)? (atrib += Atrib)* '}';
 
-Field: {Field} (atrib=Atrib)
-	 | {Field} (method=Method)
+Atrib: (atribName = ID)  ":"  (Tipo = (VALID_TYPES|TYPE_NAME))    (":" (Value = Values))?
 ;
 
-Method:(mName = ID) '(' ( par+=Parm )* ')' ":"  (Tipo = VALID_TYPES) ( (implem = ALMOST__ANY__THING) )? 
-;	
+GlobAtrib: (atribName = ID)  ":"  (Tipo = (VALID_TYPES|TYPE_NAME))    (":" (Value = Values))
+;
+Values : {Values} (Id=INT)
+	   | {Values} (IdB=BOOL)
+	   | {Values} (IdF=FLOAT)
+	   | {Values} (IdS=STRING)
+	   | {Values} (IdC=CHAR)
+	   | ('new' IdT=ID'(' ((Par+=ID ',')* Par+=ID)?  ')')
+;
 
-Parm: atribName = ID ':' Tipo_atri = VALID_TYPES
+Parm: atribName = ID ':' Tipo_atri = (VALID_TYPES|TYPE_NAME)
 	
 ;
-
-Atrib: (atribName = ID)  ":"  (Tipo = INT_TYPES)    (":" (ValueInt = INT))?
-	 | (atribName = ID)  ":"  (Tipo = 'boolean')    (":" (ValueBool = BOOL))?
-	 | (atribName = ID)  ":"  (Tipo = FLOAT_TYPES)  (":" (ValueFlo = FLOAT))?
-	 | (atribName = ID)  ":"  (Tipo = "String")     (":" (ValueStr = STRING))?
-	 | (atribName = ID)  ":"  (Tipo = "char")     (":" (ValueChr = CHAR))?
-	 | (atribName = ID)  ":"  (Tipo = TYPE_NAME)
-;
-TYPE_NAME : ID ('<'((ID|VALID_TYPES)',')* ID '>')?; 
+TYPE_NAME : ID ('<' ((ID|VALID_TYPES)',')* (ID|VALID_TYPES) '>')?; 
 
 VALID_TYPES :"String"
 			|'boolean'
@@ -39,6 +37,7 @@ VALID_TYPES :"String"
 			|FLOAT_TYPES
 ;
 
+PackageName :ID ('.'ID)*;
 terminal BOOL :("True"|"False");
 
 terminal FLOAT returns ecore::EFloat :  ('1'..'9')('0'..'9')*'.'('0'..'9')+;

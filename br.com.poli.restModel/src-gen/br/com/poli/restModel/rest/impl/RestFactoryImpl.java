@@ -68,10 +68,10 @@ public class RestFactoryImpl extends EFactoryImpl implements RestFactory
       case RestPackage.MODEL: return createModel();
       case RestPackage.BODY: return createBody();
       case RestPackage.ELEM: return createElem();
-      case RestPackage.FIELD: return createField();
-      case RestPackage.METHOD: return createMethod();
-      case RestPackage.PARM: return createParm();
       case RestPackage.ATRIB: return createAtrib();
+      case RestPackage.GLOB_ATRIB: return createGlobAtrib();
+      case RestPackage.VALUES: return createValues();
+      case RestPackage.PARM: return createParm();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -115,10 +115,10 @@ public class RestFactoryImpl extends EFactoryImpl implements RestFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Field createField()
+  public Atrib createAtrib()
   {
-    FieldImpl field = new FieldImpl();
-    return field;
+    AtribImpl atrib = new AtribImpl();
+    return atrib;
   }
 
   /**
@@ -126,10 +126,21 @@ public class RestFactoryImpl extends EFactoryImpl implements RestFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Method createMethod()
+  public GlobAtrib createGlobAtrib()
   {
-    MethodImpl method = new MethodImpl();
-    return method;
+    GlobAtribImpl globAtrib = new GlobAtribImpl();
+    return globAtrib;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Values createValues()
+  {
+    ValuesImpl values = new ValuesImpl();
+    return values;
   }
 
   /**
@@ -141,17 +152,6 @@ public class RestFactoryImpl extends EFactoryImpl implements RestFactory
   {
     ParmImpl parm = new ParmImpl();
     return parm;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Atrib createAtrib()
-  {
-    AtribImpl atrib = new AtribImpl();
-    return atrib;
   }
 
   /**

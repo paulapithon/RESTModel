@@ -6,11 +6,11 @@ package br.com.poli.restModel.serializer;
 import br.com.poli.restModel.rest.Atrib;
 import br.com.poli.restModel.rest.Body;
 import br.com.poli.restModel.rest.Elem;
-import br.com.poli.restModel.rest.Field;
-import br.com.poli.restModel.rest.Method;
+import br.com.poli.restModel.rest.GlobAtrib;
 import br.com.poli.restModel.rest.Model;
 import br.com.poli.restModel.rest.Parm;
 import br.com.poli.restModel.rest.RestPackage;
+import br.com.poli.restModel.rest.Values;
 import br.com.poli.restModel.services.RestGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -20,9 +20,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -47,17 +45,17 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case RestPackage.ELEM:
 				sequence_Elem(context, (Elem) semanticObject); 
 				return; 
-			case RestPackage.FIELD:
-				sequence_Field(context, (Field) semanticObject); 
-				return; 
-			case RestPackage.METHOD:
-				sequence_Method(context, (Method) semanticObject); 
+			case RestPackage.GLOB_ATRIB:
+				sequence_GlobAtrib(context, (GlobAtrib) semanticObject); 
 				return; 
 			case RestPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
 			case RestPackage.PARM:
 				sequence_Parm(context, (Parm) semanticObject); 
+				return; 
+			case RestPackage.VALUES:
+				sequence_Values(context, (Values) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -69,14 +67,7 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Atrib returns Atrib
 	 *
 	 * Constraint:
-	 *     (
-	 *         (atribName=ID Tipo=INT_TYPES ValueInt=INT?) | 
-	 *         (atribName=ID Tipo='boolean' ValueBool=BOOL?) | 
-	 *         (atribName=ID Tipo=FLOAT_TYPES ValueFlo=FLOAT?) | 
-	 *         (atribName=ID Tipo='String' ValueStr=STRING?) | 
-	 *         (atribName=ID Tipo='char' ValueChr=CHAR?) | 
-	 *         (atribName=ID Tipo=TYPE_NAME)
-	 *     )
+	 *     (atribName=ID (Tipo=VALID_TYPES | Tipo=TYPE_NAME) Value=Values?)
 	 */
 	protected void sequence_Atrib(ISerializationContext context, Atrib semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -88,7 +79,7 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Body returns Body
 	 *
 	 * Constraint:
-	 *     (elem+=Elem | globAtrib+=Atrib)
+	 *     (elem=Elem | globAtrib=GlobAtrib)
 	 */
 	protected void sequence_Body(ISerializationContext context, Body semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -100,7 +91,7 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Elem returns Elem
 	 *
 	 * Constraint:
-	 *     (ClassName=ID field+=Field*)
+	 *     (ClassName=ID package=PackageName? atrib+=Atrib*)
 	 */
 	protected void sequence_Elem(ISerializationContext context, Elem semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -109,24 +100,12 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Field returns Field
+	 *     GlobAtrib returns GlobAtrib
 	 *
 	 * Constraint:
-	 *     (atrib=Atrib | method=Method)
+	 *     (atribName=ID (Tipo=VALID_TYPES | Tipo=TYPE_NAME) Value=Values)
 	 */
-	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Method returns Method
-	 *
-	 * Constraint:
-	 *     (mName=ID par+=Parm* Tipo=VALID_TYPES implem=ALMOST__ANY__THING?)
-	 */
-	protected void sequence_Method(ISerializationContext context, Method semanticObject) {
+	protected void sequence_GlobAtrib(ISerializationContext context, GlobAtrib semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -148,19 +127,29 @@ public class RestSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Parm returns Parm
 	 *
 	 * Constraint:
-	 *     (atribName=ID Tipo_atri=VALID_TYPES)
+	 *     (atribName=ID (Tipo_atri=VALID_TYPES | Tipo_atri=TYPE_NAME))
 	 */
 	protected void sequence_Parm(ISerializationContext context, Parm semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RestPackage.Literals.PARM__ATRIB_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RestPackage.Literals.PARM__ATRIB_NAME));
-			if (transientValues.isValueTransient(semanticObject, RestPackage.Literals.PARM__TIPO_ATRI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RestPackage.Literals.PARM__TIPO_ATRI));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParmAccess().getAtribNameIDTerminalRuleCall_0_0(), semanticObject.getAtribName());
-		feeder.accept(grammarAccess.getParmAccess().getTipo_atriVALID_TYPESParserRuleCall_2_0(), semanticObject.getTipo_atri());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Values returns Values
+	 *
+	 * Constraint:
+	 *     (
+	 *         Id=INT | 
+	 *         IdB=BOOL | 
+	 *         IdF=FLOAT | 
+	 *         IdS=STRING | 
+	 *         IdC=CHAR | 
+	 *         (IdT=ID (Par+=ID* Par+=ID)?)
+	 *     )
+	 */
+	protected void sequence_Values(ISerializationContext context, Values semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

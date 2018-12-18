@@ -94,17 +94,24 @@ public class RestSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RestPackage.FIELD:
+      case RestPackage.ATRIB:
       {
-        Field field = (Field)theEObject;
-        T result = caseField(field);
+        Atrib atrib = (Atrib)theEObject;
+        T result = caseAtrib(atrib);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RestPackage.METHOD:
+      case RestPackage.GLOB_ATRIB:
       {
-        Method method = (Method)theEObject;
-        T result = caseMethod(method);
+        GlobAtrib globAtrib = (GlobAtrib)theEObject;
+        T result = caseGlobAtrib(globAtrib);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RestPackage.VALUES:
+      {
+        Values values = (Values)theEObject;
+        T result = caseValues(values);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,13 +119,6 @@ public class RestSwitch<T> extends Switch<T>
       {
         Parm parm = (Parm)theEObject;
         T result = caseParm(parm);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RestPackage.ATRIB:
-      {
-        Atrib atrib = (Atrib)theEObject;
-        T result = caseAtrib(atrib);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -175,33 +175,49 @@ public class RestSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Atrib</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Field</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Atrib</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseField(Field object)
+  public T caseAtrib(Atrib object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Method</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Glob Atrib</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Method</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Glob Atrib</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMethod(Method object)
+  public T caseGlobAtrib(GlobAtrib object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Values</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Values</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValues(Values object)
   {
     return null;
   }
@@ -218,22 +234,6 @@ public class RestSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseParm(Parm object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Atrib</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atrib</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAtrib(Atrib object)
   {
     return null;
   }

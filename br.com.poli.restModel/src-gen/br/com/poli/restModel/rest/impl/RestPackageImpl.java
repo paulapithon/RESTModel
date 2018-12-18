@@ -6,12 +6,12 @@ package br.com.poli.restModel.rest.impl;
 import br.com.poli.restModel.rest.Atrib;
 import br.com.poli.restModel.rest.Body;
 import br.com.poli.restModel.rest.Elem;
-import br.com.poli.restModel.rest.Field;
-import br.com.poli.restModel.rest.Method;
+import br.com.poli.restModel.rest.GlobAtrib;
 import br.com.poli.restModel.rest.Model;
 import br.com.poli.restModel.rest.Parm;
 import br.com.poli.restModel.rest.RestFactory;
 import br.com.poli.restModel.rest.RestPackage;
+import br.com.poli.restModel.rest.Values;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -54,14 +54,21 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass fieldEClass = null;
+  private EClass atribEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass methodEClass = null;
+  private EClass globAtribEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass valuesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,13 +76,6 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * @generated
    */
   private EClass parmEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass atribEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -215,9 +215,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getElem_Field()
+  public EAttribute getElem_Package()
   {
-    return (EReference)elemEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)elemEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -225,109 +225,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getField()
+  public EReference getElem_Atrib()
   {
-    return fieldEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getField_Atrib()
-  {
-    return (EReference)fieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getField_Method()
-  {
-    return (EReference)fieldEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getMethod()
-  {
-    return methodEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMethod_MName()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getMethod_Par()
-  {
-    return (EReference)methodEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMethod_Tipo()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMethod_Implem()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getParm()
-  {
-    return parmEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getParm_AtribName()
-  {
-    return (EAttribute)parmEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getParm_Tipo_atri()
-  {
-    return (EAttribute)parmEClass.getEStructuralFeatures().get(1);
+    return (EReference)elemEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -365,9 +265,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAtrib_ValueInt()
+  public EReference getAtrib_Value()
   {
-    return (EAttribute)atribEClass.getEStructuralFeatures().get(2);
+    return (EReference)atribEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -375,9 +275,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAtrib_ValueBool()
+  public EClass getGlobAtrib()
   {
-    return (EAttribute)atribEClass.getEStructuralFeatures().get(3);
+    return globAtribEClass;
   }
 
   /**
@@ -385,9 +285,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAtrib_ValueFlo()
+  public EAttribute getGlobAtrib_AtribName()
   {
-    return (EAttribute)atribEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)globAtribEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -395,9 +295,9 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAtrib_ValueStr()
+  public EAttribute getGlobAtrib_Tipo()
   {
-    return (EAttribute)atribEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)globAtribEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -405,9 +305,119 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAtrib_ValueChr()
+  public EReference getGlobAtrib_Value()
   {
-    return (EAttribute)atribEClass.getEStructuralFeatures().get(6);
+    return (EReference)globAtribEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getValues()
+  {
+    return valuesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_Id()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_IdB()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_IdF()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_IdS()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_IdC()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_IdT()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValues_Par()
+  {
+    return (EAttribute)valuesEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParm()
+  {
+    return parmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParm_AtribName()
+  {
+    return (EAttribute)parmEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParm_Tipo_atri()
+  {
+    return (EAttribute)parmEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -449,30 +459,31 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
 
     elemEClass = createEClass(ELEM);
     createEAttribute(elemEClass, ELEM__CLASS_NAME);
-    createEReference(elemEClass, ELEM__FIELD);
-
-    fieldEClass = createEClass(FIELD);
-    createEReference(fieldEClass, FIELD__ATRIB);
-    createEReference(fieldEClass, FIELD__METHOD);
-
-    methodEClass = createEClass(METHOD);
-    createEAttribute(methodEClass, METHOD__MNAME);
-    createEReference(methodEClass, METHOD__PAR);
-    createEAttribute(methodEClass, METHOD__TIPO);
-    createEAttribute(methodEClass, METHOD__IMPLEM);
-
-    parmEClass = createEClass(PARM);
-    createEAttribute(parmEClass, PARM__ATRIB_NAME);
-    createEAttribute(parmEClass, PARM__TIPO_ATRI);
+    createEAttribute(elemEClass, ELEM__PACKAGE);
+    createEReference(elemEClass, ELEM__ATRIB);
 
     atribEClass = createEClass(ATRIB);
     createEAttribute(atribEClass, ATRIB__ATRIB_NAME);
     createEAttribute(atribEClass, ATRIB__TIPO);
-    createEAttribute(atribEClass, ATRIB__VALUE_INT);
-    createEAttribute(atribEClass, ATRIB__VALUE_BOOL);
-    createEAttribute(atribEClass, ATRIB__VALUE_FLO);
-    createEAttribute(atribEClass, ATRIB__VALUE_STR);
-    createEAttribute(atribEClass, ATRIB__VALUE_CHR);
+    createEReference(atribEClass, ATRIB__VALUE);
+
+    globAtribEClass = createEClass(GLOB_ATRIB);
+    createEAttribute(globAtribEClass, GLOB_ATRIB__ATRIB_NAME);
+    createEAttribute(globAtribEClass, GLOB_ATRIB__TIPO);
+    createEReference(globAtribEClass, GLOB_ATRIB__VALUE);
+
+    valuesEClass = createEClass(VALUES);
+    createEAttribute(valuesEClass, VALUES__ID);
+    createEAttribute(valuesEClass, VALUES__ID_B);
+    createEAttribute(valuesEClass, VALUES__ID_F);
+    createEAttribute(valuesEClass, VALUES__ID_S);
+    createEAttribute(valuesEClass, VALUES__ID_C);
+    createEAttribute(valuesEClass, VALUES__ID_T);
+    createEAttribute(valuesEClass, VALUES__PAR);
+
+    parmEClass = createEClass(PARM);
+    createEAttribute(parmEClass, PARM__ATRIB_NAME);
+    createEAttribute(parmEClass, PARM__TIPO_ATRI);
   }
 
   /**
@@ -510,35 +521,36 @@ public class RestPackageImpl extends EPackageImpl implements RestPackage
     initEReference(getModel_Body(), this.getBody(), null, "body", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bodyEClass, Body.class, "Body", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBody_Elem(), this.getElem(), null, "elem", null, 0, -1, Body.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBody_GlobAtrib(), this.getAtrib(), null, "globAtrib", null, 0, -1, Body.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBody_Elem(), this.getElem(), null, "elem", null, 0, 1, Body.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBody_GlobAtrib(), this.getGlobAtrib(), null, "globAtrib", null, 0, 1, Body.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(elemEClass, Elem.class, "Elem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getElem_ClassName(), ecorePackage.getEString(), "ClassName", null, 0, 1, Elem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getElem_Field(), this.getField(), null, "field", null, 0, -1, Elem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getField_Atrib(), this.getAtrib(), null, "atrib", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getField_Method(), this.getMethod(), null, "method", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMethod_MName(), ecorePackage.getEString(), "mName", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethod_Par(), this.getParm(), null, "par", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_Tipo(), ecorePackage.getEString(), "Tipo", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_Implem(), ecorePackage.getEString(), "implem", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(parmEClass, Parm.class, "Parm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getParm_AtribName(), ecorePackage.getEString(), "atribName", null, 0, 1, Parm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParm_Tipo_atri(), ecorePackage.getEString(), "Tipo_atri", null, 0, 1, Parm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getElem_Package(), ecorePackage.getEString(), "package", null, 0, 1, Elem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElem_Atrib(), this.getAtrib(), null, "atrib", null, 0, -1, Elem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atribEClass, Atrib.class, "Atrib", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAtrib_AtribName(), ecorePackage.getEString(), "atribName", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAtrib_Tipo(), ecorePackage.getEString(), "Tipo", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAtrib_ValueInt(), ecorePackage.getEInt(), "ValueInt", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAtrib_ValueBool(), ecorePackage.getEString(), "ValueBool", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAtrib_ValueFlo(), ecorePackage.getEFloat(), "ValueFlo", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAtrib_ValueStr(), ecorePackage.getEString(), "ValueStr", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAtrib_ValueChr(), ecorePackage.getEChar(), "ValueChr", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtrib_Value(), this.getValues(), null, "Value", null, 0, 1, Atrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(globAtribEClass, GlobAtrib.class, "GlobAtrib", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGlobAtrib_AtribName(), ecorePackage.getEString(), "atribName", null, 0, 1, GlobAtrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGlobAtrib_Tipo(), ecorePackage.getEString(), "Tipo", null, 0, 1, GlobAtrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobAtrib_Value(), this.getValues(), null, "Value", null, 0, 1, GlobAtrib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(valuesEClass, Values.class, "Values", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getValues_Id(), ecorePackage.getEInt(), "Id", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_IdB(), ecorePackage.getEString(), "IdB", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_IdF(), ecorePackage.getEFloat(), "IdF", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_IdS(), ecorePackage.getEString(), "IdS", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_IdC(), ecorePackage.getEChar(), "IdC", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_IdT(), ecorePackage.getEString(), "IdT", null, 0, 1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValues_Par(), ecorePackage.getEString(), "Par", null, 0, -1, Values.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parmEClass, Parm.class, "Parm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParm_AtribName(), ecorePackage.getEString(), "atribName", null, 0, 1, Parm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParm_Tipo_atri(), ecorePackage.getEString(), "Tipo_atri", null, 0, 1, Parm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

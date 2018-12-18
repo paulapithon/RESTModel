@@ -3,24 +3,19 @@
  */
 package br.com.poli.restModel.rest.impl;
 
-import br.com.poli.restModel.rest.Atrib;
 import br.com.poli.restModel.rest.Body;
 import br.com.poli.restModel.rest.Elem;
+import br.com.poli.restModel.rest.GlobAtrib;
 import br.com.poli.restModel.rest.RestPackage;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,24 +34,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class BodyImpl extends MinimalEObjectImpl.Container implements Body
 {
   /**
-   * The cached value of the '{@link #getElem() <em>Elem</em>}' containment reference list.
+   * The cached value of the '{@link #getElem() <em>Elem</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getElem()
    * @generated
    * @ordered
    */
-  protected EList<Elem> elem;
+  protected Elem elem;
 
   /**
-   * The cached value of the '{@link #getGlobAtrib() <em>Glob Atrib</em>}' containment reference list.
+   * The cached value of the '{@link #getGlobAtrib() <em>Glob Atrib</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getGlobAtrib()
    * @generated
    * @ordered
    */
-  protected EList<Atrib> globAtrib;
+  protected GlobAtrib globAtrib;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,12 +79,8 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Elem> getElem()
+  public Elem getElem()
   {
-    if (elem == null)
-    {
-      elem = new EObjectContainmentEList<Elem>(Elem.class, this, RestPackage.BODY__ELEM);
-    }
     return elem;
   }
 
@@ -98,13 +89,85 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Atrib> getGlobAtrib()
+  public NotificationChain basicSetElem(Elem newElem, NotificationChain msgs)
   {
-    if (globAtrib == null)
+    Elem oldElem = elem;
+    elem = newElem;
+    if (eNotificationRequired())
     {
-      globAtrib = new EObjectContainmentEList<Atrib>(Atrib.class, this, RestPackage.BODY__GLOB_ATRIB);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RestPackage.BODY__ELEM, oldElem, newElem);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setElem(Elem newElem)
+  {
+    if (newElem != elem)
+    {
+      NotificationChain msgs = null;
+      if (elem != null)
+        msgs = ((InternalEObject)elem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RestPackage.BODY__ELEM, null, msgs);
+      if (newElem != null)
+        msgs = ((InternalEObject)newElem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RestPackage.BODY__ELEM, null, msgs);
+      msgs = basicSetElem(newElem, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.BODY__ELEM, newElem, newElem));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GlobAtrib getGlobAtrib()
+  {
     return globAtrib;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetGlobAtrib(GlobAtrib newGlobAtrib, NotificationChain msgs)
+  {
+    GlobAtrib oldGlobAtrib = globAtrib;
+    globAtrib = newGlobAtrib;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RestPackage.BODY__GLOB_ATRIB, oldGlobAtrib, newGlobAtrib);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGlobAtrib(GlobAtrib newGlobAtrib)
+  {
+    if (newGlobAtrib != globAtrib)
+    {
+      NotificationChain msgs = null;
+      if (globAtrib != null)
+        msgs = ((InternalEObject)globAtrib).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RestPackage.BODY__GLOB_ATRIB, null, msgs);
+      if (newGlobAtrib != null)
+        msgs = ((InternalEObject)newGlobAtrib).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RestPackage.BODY__GLOB_ATRIB, null, msgs);
+      msgs = basicSetGlobAtrib(newGlobAtrib, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.BODY__GLOB_ATRIB, newGlobAtrib, newGlobAtrib));
   }
 
   /**
@@ -118,9 +181,9 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
     switch (featureID)
     {
       case RestPackage.BODY__ELEM:
-        return ((InternalEList<?>)getElem()).basicRemove(otherEnd, msgs);
+        return basicSetElem(null, msgs);
       case RestPackage.BODY__GLOB_ATRIB:
-        return ((InternalEList<?>)getGlobAtrib()).basicRemove(otherEnd, msgs);
+        return basicSetGlobAtrib(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -148,19 +211,16 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case RestPackage.BODY__ELEM:
-        getElem().clear();
-        getElem().addAll((Collection<? extends Elem>)newValue);
+        setElem((Elem)newValue);
         return;
       case RestPackage.BODY__GLOB_ATRIB:
-        getGlobAtrib().clear();
-        getGlobAtrib().addAll((Collection<? extends Atrib>)newValue);
+        setGlobAtrib((GlobAtrib)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -177,10 +237,10 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
     switch (featureID)
     {
       case RestPackage.BODY__ELEM:
-        getElem().clear();
+        setElem((Elem)null);
         return;
       case RestPackage.BODY__GLOB_ATRIB:
-        getGlobAtrib().clear();
+        setGlobAtrib((GlobAtrib)null);
         return;
     }
     super.eUnset(featureID);
@@ -197,9 +257,9 @@ public class BodyImpl extends MinimalEObjectImpl.Container implements Body
     switch (featureID)
     {
       case RestPackage.BODY__ELEM:
-        return elem != null && !elem.isEmpty();
+        return elem != null;
       case RestPackage.BODY__GLOB_ATRIB:
-        return globAtrib != null && !globAtrib.isEmpty();
+        return globAtrib != null;
     }
     return super.eIsSet(featureID);
   }

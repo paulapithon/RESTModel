@@ -3,8 +3,8 @@
  */
 package br.com.poli.restModel.rest.impl;
 
+import br.com.poli.restModel.rest.Atrib;
 import br.com.poli.restModel.rest.Elem;
-import br.com.poli.restModel.rest.Field;
 import br.com.poli.restModel.rest.RestPackage;
 
 import java.util.Collection;
@@ -32,7 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link br.com.poli.restModel.rest.impl.ElemImpl#getClassName <em>Class Name</em>}</li>
- *   <li>{@link br.com.poli.restModel.rest.impl.ElemImpl#getField <em>Field</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.impl.ElemImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link br.com.poli.restModel.rest.impl.ElemImpl#getAtrib <em>Atrib</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,14 +61,34 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
   protected String className = CLASS_NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getField() <em>Field</em>}' containment reference list.
+   * The default value of the '{@link #getPackage() <em>Package</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getField()
+   * @see #getPackage()
    * @generated
    * @ordered
    */
-  protected EList<Field> field;
+  protected static final String PACKAGE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPackage() <em>Package</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPackage()
+   * @generated
+   * @ordered
+   */
+  protected String package_ = PACKAGE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getAtrib() <em>Atrib</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAtrib()
+   * @generated
+   * @ordered
+   */
+  protected EList<Atrib> atrib;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,13 +139,36 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Field> getField()
+  public String getPackage()
   {
-    if (field == null)
+    return package_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPackage(String newPackage)
+  {
+    String oldPackage = package_;
+    package_ = newPackage;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RestPackage.ELEM__PACKAGE, oldPackage, package_));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Atrib> getAtrib()
+  {
+    if (atrib == null)
     {
-      field = new EObjectContainmentEList<Field>(Field.class, this, RestPackage.ELEM__FIELD);
+      atrib = new EObjectContainmentEList<Atrib>(Atrib.class, this, RestPackage.ELEM__ATRIB);
     }
-    return field;
+    return atrib;
   }
 
   /**
@@ -137,8 +181,8 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
   {
     switch (featureID)
     {
-      case RestPackage.ELEM__FIELD:
-        return ((InternalEList<?>)getField()).basicRemove(otherEnd, msgs);
+      case RestPackage.ELEM__ATRIB:
+        return ((InternalEList<?>)getAtrib()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -155,8 +199,10 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
     {
       case RestPackage.ELEM__CLASS_NAME:
         return getClassName();
-      case RestPackage.ELEM__FIELD:
-        return getField();
+      case RestPackage.ELEM__PACKAGE:
+        return getPackage();
+      case RestPackage.ELEM__ATRIB:
+        return getAtrib();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -175,9 +221,12 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
       case RestPackage.ELEM__CLASS_NAME:
         setClassName((String)newValue);
         return;
-      case RestPackage.ELEM__FIELD:
-        getField().clear();
-        getField().addAll((Collection<? extends Field>)newValue);
+      case RestPackage.ELEM__PACKAGE:
+        setPackage((String)newValue);
+        return;
+      case RestPackage.ELEM__ATRIB:
+        getAtrib().clear();
+        getAtrib().addAll((Collection<? extends Atrib>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,8 +245,11 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
       case RestPackage.ELEM__CLASS_NAME:
         setClassName(CLASS_NAME_EDEFAULT);
         return;
-      case RestPackage.ELEM__FIELD:
-        getField().clear();
+      case RestPackage.ELEM__PACKAGE:
+        setPackage(PACKAGE_EDEFAULT);
+        return;
+      case RestPackage.ELEM__ATRIB:
+        getAtrib().clear();
         return;
     }
     super.eUnset(featureID);
@@ -215,8 +267,10 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
     {
       case RestPackage.ELEM__CLASS_NAME:
         return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
-      case RestPackage.ELEM__FIELD:
-        return field != null && !field.isEmpty();
+      case RestPackage.ELEM__PACKAGE:
+        return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
+      case RestPackage.ELEM__ATRIB:
+        return atrib != null && !atrib.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -234,6 +288,8 @@ public class ElemImpl extends MinimalEObjectImpl.Container implements Elem
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (ClassName: ");
     result.append(className);
+    result.append(", package: ");
+    result.append(package_);
     result.append(')');
     return result.toString();
   }

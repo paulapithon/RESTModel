@@ -15,30 +15,31 @@
     </genClasses>
     <genClasses ecoreClass="Rest.ecore#//Elem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Elem/ClassName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Elem/field"/>
-    </genClasses>
-    <genClasses ecoreClass="Rest.ecore#//Field">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Field/atrib"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Field/method"/>
-    </genClasses>
-    <genClasses ecoreClass="Rest.ecore#//Method">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Method/mName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Method/par"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Method/Tipo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Method/implem"/>
-    </genClasses>
-    <genClasses ecoreClass="Rest.ecore#//Parm">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Parm/atribName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Parm/Tipo_atri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Elem/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Elem/atrib"/>
     </genClasses>
     <genClasses ecoreClass="Rest.ecore#//Atrib">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/atribName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/Tipo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/ValueInt"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/ValueBool"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/ValueFlo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/ValueStr"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Atrib/ValueChr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//Atrib/Value"/>
+    </genClasses>
+    <genClasses ecoreClass="Rest.ecore#//GlobAtrib">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//GlobAtrib/atribName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//GlobAtrib/Tipo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rest.ecore#//GlobAtrib/Value"/>
+    </genClasses>
+    <genClasses ecoreClass="Rest.ecore#//Values">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/Id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/IdB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/IdF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/IdS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/IdC"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/IdT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Values/Par"/>
+    </genClasses>
+    <genClasses ecoreClass="Rest.ecore#//Parm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Parm/atribName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rest.ecore#//Parm/Tipo_atri"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
