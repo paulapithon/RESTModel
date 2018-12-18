@@ -16,6 +16,7 @@ import java.util.Map.Entry
 import java.util.Map
 import br.com.poli.restModel.rest.GlobAtrib
 import br.com.poli.restModel.rest.Values
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -27,9 +28,13 @@ class RestGenerator extends AbstractGenerator {
 
 	String className
 	Map<String, GlobAtrib> globals;
+	ArrayList<String> globalsMethods;
+
+	String keyName
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		globals = new HashMap<String, GlobAtrib>();
+		globalsMethods = new ArrayList<String>();
 		fsa.generateFile("br/com/poli/RestModelAutoGerated/RestException.java", gerateException());
 
 		for (body : resource.allContents.toIterable.filter(Body)) {
@@ -41,11 +46,26 @@ class RestGenerator extends AbstractGenerator {
 				className = body.elem.className;
 				atrHash = new HashMap<String, String>();
 				if (body.elem.package !== null) {
-					fsa.generateFile(body.elem.package.replaceAll("\\.", "/") + '/' + body.elem.className +
-						".java", '''package «body.elem.package»
+					keyName = body.elem.package.replaceAll("\\.", "/") + '/' + body.elem.className + ".java";
+					
+					if (globalsMethods.contains(keyName)) {
+						throw new InvalidParameterException()
+					}
+					
+					globalsMethods.add(keyName)
+					
+					fsa.generateFile(keyName, '''package «body.elem.package»
 «body.elem.compile»
 					''')
 				} else {
+					keyName = body.elem.className + ".java";
+					
+					if (globalsMethods.contains(keyName)) {
+						throw new InvalidParameterException()
+					}
+					
+					globalsMethods.add(keyName)
+					
 					fsa.generateFile(body.elem.className + ".java", body.elem.compile)
 				}
 			}
@@ -224,8 +244,8 @@ public class RestException extends RuntimeException{
 			return '''«atr.idF»''';
 		} else if (tipo.toLowerCase.equals("char")) {
 			return '''«atr.idC»''';
-		} else if(atr.idT !== null){
-			return '''new «atr.idT»(«FOR par :atr.par SEPARATOR ','»«par»«ENDFOR»);''';
+		} else if (atr.idT !== null) {
+			return '''new «atr.idT»(«FOR par : atr.par SEPARATOR ','»«par»«ENDFOR»);''';
 		} else {
 			throw new InvalidParameterException()
 		}

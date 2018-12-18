@@ -1,0 +1,24 @@
+Request {
+	Path : String : "123 " 
+   
+	Entity {   
+		package br.com.poli.sample     
+		Path : String 	  
+		Header : String 
+		Body :  HashMap<Int, New>  
+	} 
+	
+	Entity {   
+		package br.com.poli.sample2    
+		Path : String 	  
+		Header : String 
+		Body :  HashMap<Int, New>  
+	} 
+	
+	Entity2 { 
+		package br.com.poli.sample
+		Path : String 
+		Header : String 
+		Body : HashMap<Int, New>  
+	}
+}

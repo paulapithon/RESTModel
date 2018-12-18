@@ -10,6 +10,7 @@ import br.com.poli.restModel.rest.GlobAtrib;
 import br.com.poli.restModel.rest.Values;
 import com.google.common.collect.Iterables;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -36,10 +37,16 @@ public class RestGenerator extends AbstractGenerator {
   
   private Map<String, GlobAtrib> globals;
   
+  private ArrayList<String> globalsMethods;
+  
+  private String keyName;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     HashMap<String, GlobAtrib> _hashMap = new HashMap<String, GlobAtrib>();
     this.globals = _hashMap;
+    ArrayList<String> _arrayList = new ArrayList<String>();
+    this.globalsMethods = _arrayList;
     fsa.generateFile("br/com/poli/RestModelAutoGerated/RestException.java", this.gerateException());
     Iterable<Body> _filter = Iterables.<Body>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Body.class);
     for (final Body body : _filter) {
@@ -65,8 +72,13 @@ public class RestGenerator extends AbstractGenerator {
             String _plus = (_replaceAll + "/");
             String _className = body.getElem().getClassName();
             String _plus_1 = (_plus + _className);
-            String _plus_2 = (_plus_1 + 
-              ".java");
+            String _plus_2 = (_plus_1 + ".java");
+            this.keyName = _plus_2;
+            boolean _contains = this.globalsMethods.contains(this.keyName);
+            if (_contains) {
+              throw new InvalidParameterException();
+            }
+            this.globalsMethods.add(this.keyName);
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("package ");
             String _package_1 = body.getElem().getPackage();
@@ -75,11 +87,19 @@ public class RestGenerator extends AbstractGenerator {
             CharSequence _compile = this.compile(body.getElem());
             _builder.append(_compile);
             _builder.newLineIfNotEmpty();
-            fsa.generateFile(_plus_2, _builder);
+            fsa.generateFile(this.keyName, _builder);
           } else {
             String _className_1 = body.getElem().getClassName();
             String _plus_3 = (_className_1 + ".java");
-            fsa.generateFile(_plus_3, this.compile(body.getElem()));
+            this.keyName = _plus_3;
+            boolean _contains_1 = this.globalsMethods.contains(this.keyName);
+            if (_contains_1) {
+              throw new InvalidParameterException();
+            }
+            this.globalsMethods.add(this.keyName);
+            String _className_2 = body.getElem().getClassName();
+            String _plus_4 = (_className_2 + ".java");
+            fsa.generateFile(_plus_4, this.compile(body.getElem()));
           }
         }
       }
