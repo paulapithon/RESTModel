@@ -18,3 +18,8 @@ Request
   delete()
   ```
  A implementação destes métodos chama serviços já criados de REST. Estes irão apenas facilitar o acesso.
+
+## Bibliotecas
+Esse projeto necessita a utilização da [Eclipse IDE](https://www.eclipse.org/downloads/) visto que este utiliza dos seguintes plugins:
+- [Xtext](https://www.eclipse.org/Xtext/): Framework de desenvolvimento de linguagem de programação e linguagens de domínio específicos.
+- [Xtend](https://www.eclipse.org/xtend/): Dialeto de Java que compila em um código fonte que pode ser lido pelo Java 8.
