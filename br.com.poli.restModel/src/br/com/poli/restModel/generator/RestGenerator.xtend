@@ -24,11 +24,13 @@ import java.util.ArrayList
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class RestGenerator extends AbstractGenerator {
+	
 	Map<String, String> atrHash;
 
 	String className
 	Map<String, GlobAtrib> globals;
 	ArrayList<String> globalsMethods;
+	String keyAtr
 
 	String keyName
 
@@ -47,36 +49,42 @@ class RestGenerator extends AbstractGenerator {
 				atrHash = new HashMap<String, String>();
 				if (body.elem.package !== null) {
 					keyName = body.elem.package.replaceAll("\\.", "/") + '/' + body.elem.className + ".java";
-					
+					if (body.elem.keyatr.size > 0) {
+						keyAtr = body.elem.keyatr.get(0).atribName;
+					}
+
 					if (globalsMethods.contains(keyName)) {
 						throw new InvalidParameterException()
 					}
-					
+
 					globalsMethods.add(keyName)
-					
+
 					fsa.generateFile(keyName, '''package «body.elem.package»
 «body.elem.compile»
 					''')
 				} else {
 					keyName = body.elem.className + ".java";
-					
+
 					if (globalsMethods.contains(keyName)) {
 						throw new InvalidParameterException()
 					}
-					
+
 					globalsMethods.add(keyName)
-					
+
 					fsa.generateFile(body.elem.className + ".java", body.elem.compile)
 				}
 			}
 		}
-		fsa.generateFile("br/com/poli/RestModelAutoGerated/RestGlobals.java", '''package br.com.poli.RestModelAutoGerated
+
+		fsa.generateFile("br/com/poli/RestModelAutoGerated/RestGlobals.java", '''package br.com.poli.RestModelAutoGerated;
 
 public class RestGlobals{
-	«IF !exist("HOST")»
-	public static final String HOST = "http://localhost:8080/"
+	«IF !exist
+("HOST")»
+	public static final String HOST = "http://localhost:5000/"
 	«ENDIF»
-«FOR Entry<String, GlobAtrib>  element : globals.entrySet()»
+«FOR Entry
+<String, GlobAtrib>  element : globals.entrySet()»
 	«element.value.compile»
 «ENDFOR»
 
@@ -87,6 +95,10 @@ public class RestGlobals{
 			
 public class RestException extends RuntimeException{
 	
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 	public RestException(String msg) {
 		super(msg);
 	}
@@ -103,7 +115,8 @@ public class RestException extends RuntimeException{
 '''
 
 	def CharSequence compile(Elem elem) '''
-		import br.com.poli.RestModelAutoGerated.RestGlobals
+		import br.com.poli.RestModelAutoGerated.RestGlobals;
+		import br.com.poli.RestModelAutoGerated.RestException;
 		
 		import java.io.BufferedReader;
 		import java.io.IOException;
@@ -115,7 +128,9 @@ public class RestException extends RuntimeException{
 		import java.net.URL;
 		
 		public class «elem.className» {
-			
+		«FOR art : elem.keyatr»
+			«art.compile»
+		«ENDFOR»	
 		«FOR art : elem.atrib»
 			«art.compile»
 		«ENDFOR»		
@@ -124,75 +139,108 @@ public class RestException extends RuntimeException{
 			«gerateGetters»«gerateSetters»	
 			«gerateGetRequest»
 			«geratePostRequest»
-			private String toServer(){
-				return this.toString();
+			«geratePutRequest»
+			«gerateDeleteRequest»
+			«gerateRequest»
+			«gerateURL»
+			
+			«gerateToServer»
+		}
+	'''
+
+	def gerateURL() '''
+		public String getURL() {
+			return RestGlobals.HOST + "/ + «className»«IF !(keyAtr.isNullOrEmpty)» "+ "/" + this.«keyAtr.toFirstLower» + "«ENDIF»";
+		}
+	'''
+
+	def gerateToServer() '''
+	private String toServer(){
+		String output = "{\n «FOR Entry<String, String>  art : atrHash.entrySet() SEPARATOR ", \\n\\t"» \"«art.key»\" :  \""+ «art.key.toFirstLower» + "\"«ENDFOR»\n}";
+		return output;
+	}'''
+
+	def CharSequence gerateRequest() '''
+		public String request(String requestType) throws IOException {
+			String rValue = "";
+			URL url = new URL(this.getURL());
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod(requestType);
+			if(requestType.equals("POST") || requestType.equals("DELETE")  || requestType.equals("PUT")){
+				conn.setRequestProperty("Content-Type", "application/json");
 			}
+			else{
+				conn.setRequestProperty("Accept", "application/json");				
+			}
+			if(requestType.equals("POST") || requestType.equals("PUT")){
+				String input = this.toServer();
+				
+				OutputStream os = conn.getOutputStream();
+				os.write(input.getBytes());
+				os.flush();
+			}
+			
+			if (conn.getResponseCode() != 200) {
+				throw new RestException("Failed : HTTP error code : " + conn.getResponseCode());
+			}
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+				
+			String output;
+			while ((output = br.readLine()) != null) {
+					rValue += (output) + "\n";
+			}
+		
+				conn.disconnect();
+				
+				return rValue;
 		}
 	'''
 
 	def CharSequence geratePostRequest() '''
-		public String Post() {
+		public String post() {
 			String rValue = "";
-			try {
-		
-			URL url = new URL(RestGlobals.HOST);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
-		
-				String input = this.toServer();
-		
-				OutputStream os = conn.getOutputStream();
-				os.write(input.getBytes());
-				os.flush();
-		
-				if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-			throw new RestException("Failed : HTTP error code : " + conn.getResponseCode());
-				}
-		
-				BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-		
-				String output;
-				while ((output = br.readLine()) != null) {
-			rValue += (output) + "\n";
-				}
-		
-				conn.disconnect();
-		
-			} catch (MalformedURLException | IOException e) {
-		
-			throw new RestException(e);
-		
+			try{
+				rValue = this.request("POST");
+			} catch ( IOException e) {
+				throw new RestException(e);
+			}
+			return rValue;
+		}
+	'''
+
+	def CharSequence geratePutRequest() '''
+		public String put() {
+			String rValue = "";
+			try{
+				rValue = this.request("PUT");
+			} catch ( IOException e) {
+				throw new RestException(e);
+			}
+			return rValue;
+		}
+	'''
+
+	def CharSequence gerateDeleteRequest() '''
+		public String delete() {
+			String rValue = "";
+			try{
+				rValue = this.request("DELETE");
+			} catch ( IOException e) {
+				throw new RestException(e);
 			}
 			return rValue;
 		}
 	'''
 
 	def CharSequence gerateGetRequest() '''
-	public String request() {
+	public String get(String url) {
 		String rValue = "";
 		try {
-	
-		URL url = new URL(RestGlobals.HOST);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Accept", "application/json");
-	
-			if (conn.getResponseCode() != 200) {
-		throw new RestException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-	
-			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-	
-			String output;
-			while ((output = br.readLine()) != null) {
-		rValue += (output) + "\n";
-			}
-	
-			conn.disconnect();
-	
-		} catch (MalformedURLException | IOException e) {
+			rValue = this.request("GET");	
+		} catch (IOException e) {
 			throw new RestException(e);
 		}
 		return rValue;
@@ -205,12 +253,15 @@ public class RestException extends RuntimeException{
 			«ENDFOR»
 		}
 		
+		public «className» (){
+		}
+		
 	'''
 
 	def CharSequence gerateGetters() '''
 		«FOR Entry<String, String>  art : atrHash.entrySet()»
 			public «art.value» get«art.key.toFirstUpper»(){
-				return this.«art.key.toLowerCase»
+				return this.«art.key.toLowerCase»;
 			}
 			
 			«ENDFOR»
@@ -227,7 +278,7 @@ public class RestException extends RuntimeException{
 	'''
 
 	def CharSequence compile(
-		Atrib atr) '''	private «atr.tipo» «atr.atribName.toFirstLower»«IF (atr.value !== null)» = «atr.value» «ENDIF»;«if(atrHash.put(atr.atribName,atr.tipo) !== null)throw new InvalidParameterException()»'''
+		Atrib atr) '''	private «atr.tipo» «atr.atribName.toFirstLower»«IF (atr.value !== null)» = «atr.value.compileAndCheck(atr.tipo)» «ENDIF»;«if(atrHash.put(atr.atribName,atr.tipo) !== null)throw new InvalidParameterException()»'''
 
 	def CharSequence compile(
 		GlobAtrib atr) '''	public static final «atr.tipo» «atr.atribName.toUpperCase»  = «atr.value.compileAndCheck(atr.tipo)»;'''
@@ -258,5 +309,4 @@ public class RestException extends RuntimeException{
 		}
 		return false
 	}
-
 }

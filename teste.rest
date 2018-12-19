@@ -1,0 +1,8 @@
+Request {   
+	User {        
+		package br.com.poli.sample     
+		Key name : String  : "HOLLA"	  
+		age : int : 23           
+		occupation : String : "Network Engineer"    
+	}  
+}
